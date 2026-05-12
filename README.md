@@ -6,21 +6,21 @@
 
 ---
 
-## ✨ 功能特性
+## 功能特性
 
 - **多工具 ReAct Agent**：股价查询（yfinance）、新闻检索（Tavily）、**本地研报 RAG**（FAISS），由 LLM 自主决策调用
 - **用户系统**：注册 / 登录，bcrypt 密码哈希
-- **Web 端 API 配置**：每个用户在 UI 中配置自己的 LLM 接口（OpenAI / DeepSeek / SiliconFlow / 阿里云百炼 / Ollama / 自托管 vLLM 等 OpenAI 兼容协议），密钥不再写进 `.env`
+- **Web 端 API 配置**：每个用户在 UI 中配置自己的 LLM 接口（OpenAI / 阿里云百炼 / Ollama / 自托管 vLLM 等 OpenAI 兼容协议）
 - **多会话历史**：每个用户可新建多条对话，支持切换 / 重命名 / 删除，历史完整持久化
 - **结构化报告**：Markdown 报告 + 关键指标卡片 + 股价折线图 + 工具调用步骤回放
 - **一键 Docker 部署**：`docker compose up -d` 同时拉起 Web 应用 + 数据库
 
 ---
 
-## 🚀 一键部署（推荐）
+##  一键部署（推荐）
 
 ### 前置要求
-- 已安装 [Docker](https://www.docker.com/) 与 Docker Compose（Docker Desktop 自带）
+- 已安装 Docker
 
 ### 步骤
 
