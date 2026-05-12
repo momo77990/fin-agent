@@ -1,0 +1,49 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: finagent-mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      MARIADB_DATABASE: ${DB_NAME:-finagent}
+      MARIADB_USER: ${DB_USER:-finagent}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-finagentpass}
+    volumes:
+      - finagent-mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    # 仅在调试时需要从宿主机访问 DB 才打开端口映射：
+    # ports:
+    #   - "${DB_PORT:-3306}:3306"
+
+  app:
+    build: .
+    image: finagent-app
+    container_name: finagent-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # 容器内访问 DB 必须用服务名，覆盖 .env 里的 localhost
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-finagent}
+      DB_USER: ${DB_USER:-finagent}
+      DB_PASSWORD: ${DB_PASSWORD:-finagentpass}
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    ports:
+      - "${APP_PORT:-8501}:8501"
+    volumes:
+      # 持久化图表（不希望随容器销毁丢失历史会话的图）
+      - finagent-charts:/app/static/charts
+      # 研报 / 财报 PDF 挂载：用户将 PDF 放到本地 ./data 即可被 RAG 工具检索
+      - ./data:/app/data
+
+volumes:
+  finagent-mariadb-data:
+  finagent-charts:

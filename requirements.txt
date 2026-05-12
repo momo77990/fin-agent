@@ -1,0 +1,17 @@
+langchain
+langchain-openai
+langchain-community
+langgraph
+yfinance
+tavily-python
+faiss-cpu
+pypdf
+matplotlib
+numpy
+pandas
+streamlit
+python-dotenv
+SQLAlchemy>=2.0
+PyMySQL>=1.1
+bcrypt>=4.1
+cryptography>=42.0

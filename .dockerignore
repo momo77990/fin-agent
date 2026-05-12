@@ -1,0 +1,40 @@
+# 版本控制 & IDE
+.git
+.gitignore
+.idea
+.jbeval
+.vscode
+.devcontainer
+
+# Python 缓存
+__pycache__
+*.py[cod]
+*.egg-info
+.pytest_cache
+.mypy_cache
+
+# 虚拟环境
+.venv
+venv
+env
+
+# 本地数据 / 运行时产物
+.env
+.env.local
+*.log
+static/charts/
+data/*.pdf
+
+# 文档
+README.md
+project_summary.md
+
+# 历史依赖文件（已被 requirements.txt 取代）
+requirement.txt
+
+# 测试与开发脚本
+test_llm.py
+
+# 操作系统
+.DS_Store
+Thumbs.db
