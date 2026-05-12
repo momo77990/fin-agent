@@ -8,7 +8,7 @@
 
 ## 功能特性
 
-- **多工具 ReAct Agent**：股价查询（yfinance）、新闻检索（Tavily）、**本地研报 RAG**（FAISS），由 LLM 自主决策调用
+- **多工具 ReAct Agent**：股价查询（yfinance）、新闻检索（Tavily）、本地研报 RAG（FAISS），由 LLM 自主决策调用
 - **用户系统**：注册 / 登录，bcrypt 密码哈希
 - **Web 端 API 配置**：每个用户在 UI 中配置自己的 LLM 接口（OpenAI / 阿里云百炼 / Ollama / 自托管 vLLM 等 OpenAI 兼容协议）
 - **多会话历史**：每个用户可新建多条对话，支持切换 / 重命名 / 删除，历史完整持久化
@@ -55,7 +55,7 @@ docker compose up -d --build app    # 重新构建应用镜像
 
 ---
 
-## 🔑 配置 LLM API（在 Web UI 中完成）
+## 配置 LLM API（在 Web UI 中完成）
 
 启动应用并注册账号后，点击侧边栏的 **「API 设置」**，根据需要选择 provider 预设并填入：
 
@@ -69,8 +69,6 @@ docker compose up -d --build app    # 重新构建应用镜像
 | 预设 | Base URL | 申请地址 |
 |---|---|---|
 | OpenAI | `https://api.openai.com/v1` | [platform.openai.com](https://platform.openai.com) |
-| DeepSeek | `https://api.deepseek.com/v1` | [platform.deepseek.com](https://platform.deepseek.com) |
-| SiliconFlow | `https://api.siliconflow.cn/v1` | [siliconflow.cn](https://siliconflow.cn) |
 | 阿里云百炼 (DashScope) | `https://dashscope.aliyuncs.com/compatible-mode/v1` | [dashscope.aliyun.com](https://dashscope.aliyun.com) |
 | Ollama（本地） | `http://host.docker.internal:11434/v1` | [ollama.com](https://ollama.com) |
 | 自定义 | 自填 | 任意兼容 OpenAI Chat Completions 协议的服务 |
