@@ -6,7 +6,7 @@ from datetime import date
 
 import pandas as pd
 import streamlit as st
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
+from langchain_core.messages import AIMessage, AIMessageChunk, HumanMessage, SystemMessage, ToolMessage
 
 # ── 页面配置（必须是第一个 Streamlit 调用） ──────────────────────────
 st.set_page_config(
@@ -783,6 +783,10 @@ if user_input:
                 for mode, event in stream:
                     if mode == "messages":
                         chunk, _metadata = event
+                        # 只接受 LLM 产生的 token chunk;ToolMessage 等其他类型会把工具原始返回(如 RAG 片段)
+                        # 也累加进最终报告,必须过滤掉
+                        if not isinstance(chunk, AIMessageChunk):
+                            continue
                         content = getattr(chunk, "content", "")
                         if isinstance(content, list):
                             content = "".join(

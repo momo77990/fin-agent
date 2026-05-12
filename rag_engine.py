@@ -64,7 +64,13 @@ def _build_retriever_cached(
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     splits = splitter.split_documents(docs)
 
-    embedding_kwargs = {"model": embedding_model, "api_key": api_key}
+    # check_embedding_ctx_length=False:不要在客户端预先分词成 token ID 数组,
+    # 否则 DashScope / SiliconFlow 等 OpenAI 兼容接口会报 "contents is neither str nor list of str"
+    embedding_kwargs = {
+        "model": embedding_model,
+        "api_key": api_key,
+        "check_embedding_ctx_length": False,
+    }
     if base_url:
         embedding_kwargs["base_url"] = base_url
 
