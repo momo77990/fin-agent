@@ -75,11 +75,11 @@ docker compose up -d --build app    # 重新构建应用镜像
 
 > Tavily API Key 申请：[tavily.com](https://tavily.com)
 >
-> 配置只保存在你登录的账户下，其他用户不可见。这意味着部署者无需把任何 LLM Key 写进 `.env` 或镜像。
+> 配置只保存在你登录的账户下，其他用户不可见。
 
 ---
 
-## 📚 本地研报 / 财报 RAG
+## 本地研报 / 财报 RAG
 
 把任意 PDF（年报、招股书、券商研报…）放入项目根目录的 `data/` 文件夹：
 
@@ -96,7 +96,7 @@ fin-agent/
 
 ---
 
-## 🛠 本地开发模式（不走完整 Docker）
+##  本地开发模式（不使用 Docker）
 
 适合调试代码：仅用 docker 起 DB，应用本机跑。
 
@@ -120,7 +120,7 @@ streamlit run app.py
 
 ---
 
-## 📂 项目结构
+##  项目结构
 
 ```
 fin-agent/
@@ -144,7 +144,7 @@ fin-agent/
 
 ---
 
-## 🧱 技术栈
+##  技术栈
 
 | 层 | 技术 |
 |---|---|
