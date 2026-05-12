@@ -4,6 +4,10 @@
 
 > **在线演示**：<https://fin.momois.xyz/>
 
+## 演示截图
+
+![Fin-Agent 智能金融研报助手演示截图](assets/demo.png)
+
 ---
 
 ## 功能特性
